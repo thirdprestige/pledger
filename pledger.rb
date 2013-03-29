@@ -24,6 +24,10 @@ get '/' do
   session[:user_id] ||= DB[:pledges].insert()
 end
 
+get '/pledges' do
+  json({ amount_cents: DB[:pledges].sum(:amount_cents) })
+end
+
 post '/pledges' do
   DB[:pledges].where(id: session[:user_id]).update(
     amount_cents: params[:amount_cents],
