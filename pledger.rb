@@ -25,14 +25,22 @@ get '/' do
 end
 
 get '/pledges' do
-  json({ amount_cents: DB[:pledges].sum(:amount_cents) })
+  content_type :json
+
+  { amount_cents: DB[:pledges].sum(:amount_cents) }.to_json
 end
 
+# Update a pledge,
+# based on the session ID
+#
+# POST params:
+# - amount_cents
+# - email
 post '/pledges' do
   DB[:pledges].where(id: session[:user_id]).update(
     amount_cents: params[:amount_cents],
     email: params[:email]
   )
 
-  json({ status: :ok })
+  { status: :ok }.to_json
 end

@@ -16,9 +16,9 @@
 </head>
 
 <body class="account_31" id="pledger">
-  
+
 <div class="container">
-  
+
 <div class="row">
   <div class="well checkout loginbox span7 section offset">
     <h1 class="page-header"> Pledge </h1>
@@ -29,9 +29,9 @@
         <span id="amount">$</span>
         <div class="form-actions">
           <a role="button" class="btn btn-success main-btn" id="donate-refer" data-toggle="modal"><strong>Donate Securely<strong></a>
-          
+
           <a href="#PledgeModal" role="button" class="btn btn-info main-btn" data-toggle="modal">Pledge</a>
- 
+
           <!-- Modal -->
           <div id="PledgeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="PledgeModal" aria-hidden="true">
             <div class="modal-header">
@@ -58,9 +58,9 @@
               <button class="btn btn-info">Pledge Now</button>
             </div>
           </div>
-          
-          
-          
+
+
+
         </div>
       </fieldset>
     </form>
@@ -88,7 +88,9 @@
       $(this)
         .nextAll(".total:first")
           .html(data.value.toFixed(2));
-  });
+  }).bind("slider:ready slider:changed", function (event, data) {
+    // post to the server here
+  };
 </script>
 
 <script>
@@ -98,14 +100,14 @@ $('#donate-refer').on('click', function() {
     $('#donate-refer').trigger('click');
 </script>
 
-<script> 
-  $(document).ready(function() { 
+<script>
+  $(document).ready(function() {
     $('#pledge').ajaxForm({
             delegation: true,
             target: '#output'
         });
-  }); 
-</script> 
+  });
+</script>
 
 <script>
 </script>
