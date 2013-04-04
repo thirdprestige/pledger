@@ -2,7 +2,7 @@
 <head>
 	<link href="assets/bootstrap.min.css" rel="stylesheet">
   <link href="assets/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="assets/pledger.css#05.13" rel="stylesheet">
+  <link href="assets/pledger.css#05.22" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script type='text/javascript' src='assets/pledger.js'></script>
   <script type='text/javascript' src='assets/bootstrap.min.js'></script>
@@ -21,16 +21,16 @@
   
 <div class="row">
   <div class="well checkout loginbox span7 section offset">
-    <h1 class="page-header"> Donation </h1>
+    <h1 class="page-header"> Pledge </h1>
     <form id="pledge" action="/your_url" method="post">
       <fieldset>
-        <input type="text" data-slider="true" id="slider" data-slider-values="25,100,250,500,1000" data-slider-equal-steps="true" data-slider-snap="true" data-slider-theme="volume">
+        <input type="text" data-slider="true" id="slider" data-slider-values="25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,500,600,700,800,900,1000,1500,2000,2500,3000,4000,5000,6000,7000,8000,9000,10000,12000,13000,14000,15000,17000,19000,21000,22000,25000" data-slider-equal-steps="true" data-slider-snap="true" data-slider-theme="volume">
         <h4 class="totals" id="total">Total:</h4>
         <span id="amount">$</span>
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Donate</button>
+          <button type="submit" class="btn btn-success main-btn"><strong>Donate Securely<strong></button>
           
-          <a href="#PledgeModal" role="button" class="btn btn-info" data-toggle="modal">Pledge</a>
+          <a href="#PledgeModal" role="button" class="btn btn-info main-btn" data-toggle="modal">Pledge</a>
  
           <!-- Modal -->
           <div id="PledgeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="PledgeModal" aria-hidden="true">
@@ -43,10 +43,10 @@
                 <div class="control-group">
                   <label class="control-label" for="inputEmail">Email</label>
                   <div class="controls">
-                    <input type="text" id="inputEmail" placeholder="Email" style="height:27px; width: 220px">
+                    <input type="email" id="inputEmail" placeholder="Email" style="height:27px; width: 220px">
                   </div>
                 </div>
-                <div class="input-prepend input-append">
+                <div class="input-prepend input-append hidden">
                   <span class="add-on">$</span>
                   <input class="span2" id="appendedPrependedInput" type="text">
                   <span class="add-on">.00</span>
@@ -54,8 +54,8 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-              <button class="btn btn-primary">Submit</button>
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Change amount</button>
+              <button class="btn btn-info">Pledge Now</button>
             </div>
           </div>
           
@@ -67,40 +67,38 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="span1" style="text-align:center; margin-top:4px">
-    <p>
-      Payments secured by
-      <span class="sd-bold logo"><a href="https://simpledonation.com/" id="footer_link">Simple Donation</a></span>
-    </p>
-  </div>
-</div>
-
 </div>
 
 <script>
-$("[data-slider]")
-  .each(function () {
-    var input = $(this);
-    $("<span>")
-      .addClass("total")
-      .insertAfter($("span#amount"));
-  })
-  .bind("slider:ready slider:changed", function (event, data) {
-    $(this)
-      .nextAll(".total:first")
-        .html(data.value.toFixed(2));
+  // AutoFocus new modal
+  $(".modal").on('shown', function() {
+      $('input', this).focus();
+  });
+</script>
+
+<script>
+  $("[data-slider]")
+    .each(function () {
+      var input = $(this);
+      $("<span>")
+        .addClass("total")
+        .insertAfter($("span#amount"));
+    })
+    .bind("slider:ready slider:changed", function (event, data) {
+      $(this)
+        .nextAll(".total:first")
+          .html(data.value.toFixed(2));
   });
 </script>
 
 <script> 
-    // wait for the DOM to be loaded 
-    $(document).ready(function() { 
-      $('#pledge').ajaxForm({
-              delegation: true,
-              target: '#output'
-          });
-    }); 
+  // wait for the DOM to be loaded 
+  $(document).ready(function() { 
+    $('#pledge').ajaxForm({
+            delegation: true,
+            target: '#output'
+        });
+  }); 
 </script> 
 
 <script>
