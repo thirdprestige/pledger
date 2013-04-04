@@ -18,10 +18,11 @@
 
 <input id="balanced_payment_uri" name="customer[balanced_payment_uri]" type="hidden">
 <fieldset>
-<input type="text" data-slider="true" id="amount1 slider" data-slider-values="0,100,500,800,2000" data-slider-equal-steps="true" data-slider-snap="true" data-slider-theme="volume">
+<input type="text" data-slider="true" id="amount1 slider" data-slider-values="25,100,250,500,1000" data-slider-equal-steps="true" data-slider-snap="true" data-slider-theme="volume">
 
 <h4 class="totals" id="total">Total:</h4>
-<span class="amount">$
+
+<span id="amount">$
 <script>
 
 $("[data-slider]")
@@ -29,7 +30,7 @@ $("[data-slider]")
     var input = $(this);
     $("<span>")
       .addClass("total")
-      .insertAfter($("span.amount"));
+      .insertAfter($("span#amount"));
   })
   .bind("slider:ready slider:changed", function (event, data) {
     $(this)
@@ -39,6 +40,7 @@ $("[data-slider]")
 
 </script>
 </span>
+
 </fieldset>
 
 <fieldset>
@@ -55,7 +57,6 @@ $("[data-slider]")
 <div class="row belowbox">
 <div class="span8" style="text-align:right;">
 <p>
-<i class="icon-lock"></i>
 Payments secured by
 <span class="sd-bold logo"><a href="https://simpledonation.com/" id="footer_link">Simple Donation</a></span>
 </p>
