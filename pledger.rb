@@ -4,13 +4,13 @@ Bundler.require
 
 ## DATABASE INITIALIZATION
 
-Sequel.connect(ENV['DATABASE_URL'])
+DB = Sequel.connect(ENV['DATABASE_URL'])
 
 DB.create_table :pledges do
   primary_key :id # user ID
   String :email
   Integer :amount_cents
-end
+end rescue nil
 
 
 ## INITIAL SETUP
@@ -22,6 +22,8 @@ enable :sessions
 
 get '/' do
   session[:user_id] ||= DB[:pledges].insert()
+
+  erb :index
 end
 
 get '/pledges' do
