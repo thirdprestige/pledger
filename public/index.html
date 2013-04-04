@@ -28,7 +28,7 @@
         <h4 class="totals" id="total">Total:</h4>
         <span id="amount">$</span>
         <div class="form-actions">
-          <button type="submit" class="btn btn-success main-btn"><strong>Donate Securely<strong></button>
+          <a role="button" class="btn btn-success main-btn" id="donate-refer" data-toggle="modal"><strong>Donate Securely<strong></a>
           
           <a href="#PledgeModal" role="button" class="btn btn-info main-btn" data-toggle="modal">Pledge</a>
  
@@ -91,8 +91,14 @@
   });
 </script>
 
+<script>
+$('#donate-refer').on('click', function() {
+      $('.row a#donate-refer').attr('href', 'http://thsc.simpledonation.com/?amount_cents=' + $('span.total').html());
+    });
+    $('#donate-refer').trigger('click');
+</script>
+
 <script> 
-  // wait for the DOM to be loaded 
   $(document).ready(function() { 
     $('#pledge').ajaxForm({
             delegation: true,
