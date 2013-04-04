@@ -19,16 +19,30 @@
 <input id="balanced_payment_uri" name="customer[balanced_payment_uri]" type="hidden">
 <fieldset>
 <input type="text" data-slider="true" id="amount1 slider" data-slider-values="0,100,500,800,2000" data-slider-equal-steps="true" data-slider-snap="true" data-slider-theme="volume">
+
+<h4 class="totals" id="total">Total:</h4>
+<span class="amount">$
+<script>
+
+$("[data-slider]")
+  .each(function () {
+    var input = $(this);
+    $("<span>")
+      .addClass("total")
+      .insertAfter($("span.amount"));
+  })
+  .bind("slider:ready slider:changed", function (event, data) {
+    $(this)
+      .nextAll(".total:first")
+        .html(data.value.toFixed(2));
+  });
+
+</script>
+</span>
 </fieldset>
 
 <fieldset>
 </fieldset>
-
-<h4>Total:</h4>
-<h1>
-<span id="amount">$100.00</span>
-<span id="type"></span>
-</h1>
 
 <input class="btn btn-primary btn-large" name="commit" type="submit" value="Continue" id="continue">
 
@@ -47,7 +61,7 @@ Payments secured by
 </p>
 </div>
 </div>
-
 </div>
+
 </body>
 </html>

@@ -374,8 +374,11 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
     });
   });
 })(this.jQuery || this.Zepto, this);
+/*
+  End of jQuery Simple Slider
+*/
 
-
+/* Prevent page from moving around on touch */
 node.addEventListener("touchmove", function(event){
     // Only deal with one finger    
     if(event.touches.length == 1){ 
