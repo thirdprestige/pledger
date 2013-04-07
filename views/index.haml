@@ -1,0 +1,58 @@
+.container
+  .row
+    .well.checkout.loginbox.span7.section.offset
+      %h1.page-header Pledge
+      %form#pledge{:action => "/thanks"}
+        %fieldset
+          %input#slider{"data-slider" => "true", "data-slider-equal-steps" => "true", "data-slider-snap" => "true", "data-slider-theme" => "volume", "data-slider-values" => "25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,500,600,700,800,900,1000,1500,2000,2500,3000,4000,5000,6000,7000,8000,9000,10000,12000,13000,14000,15000,17000,19000,21000,22000,25000", :type => "text"}/
+          %h4#total.totals Total:
+          %span#amount $
+          .form-actions
+            %a#donate-refer.btn.btn-success.main-btn{"data-toggle" => "modal", :role => "button"}
+              %strong
+                Donate Securely
+                %strong/
+            %a.btn.btn-info.main-btn{"data-toggle" => "modal", :href => "#PledgeModal", :role => "button"} Pledge
+            / Modal
+            #PledgeModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "PledgeModal", :role => "dialog", :tabindex => "-1"}
+              .modal-header
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                %h3#PledgeModal Donation Pledge
+              .modal-body
+                %form.form-horizontal
+                  .control-group
+                    %label.control-label{:for => "inputEmail"} Email
+                    .controls
+                      %input#inputEmail{:placeholder => "Email", :style => "height:27px; width: 220px", :type => "email"}/
+                  .input-prepend.input-append.hidden
+                    %span.add-on $
+                    %input#appendedPrependedInput.span2{:type => "text"}/
+                    %span.add-on .00
+              .modal-footer
+                %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Change amount
+                %button.btn.btn-info Pledge Now
+:javascript
+  // AutoFocus new modal
+  $(".modal").on('shown', function() {
+      $('input', this).focus();
+  });
+:javascript
+  $("[data-slider]")
+    .each(function () {
+      var input = $(this);
+      $("<span>")
+        .addClass("total")
+        .insertAfter($("span#amount"));
+    })
+    .bind("slider:ready slider:changed", function (event, data) {
+      $(this)
+        .nextAll(".total:first")
+          .html(data.value.toFixed(2));
+  }).bind("slider:ready slider:changed", function (event, data) {
+    // post to the server here
+  });
+:javascript
+  $('#donate-refer').on('click', function() {
+        $('.row a#donate-refer').attr('href', 'http://thsc.simpledonation.com/?amount_cents=' + $('span.total').html());
+      });
+      $('#donate-refer').trigger('click');

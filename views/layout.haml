@@ -1,0 +1,24 @@
+%html
+  %head
+    / CSS
+    %link{:href => "assets/stylesheets/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "assets/stylesheets/bootstrap-responsive.min.css", :rel => "stylesheet"}
+    %link{:href => "assets/stylesheets/pledger.css#05.22", :rel => "stylesheet"}
+    
+    / JavaScript
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"}
+    %script{:src => "assets/javascripts/pledger.js", :type => "text/javascript"}
+    %script{:src => "assets/javascripts/bootstrap.min.js", :type => "text/javascript"}
+    %script{:src => "assets/javascripts/jquery.form.js", :type => "text/javascript"}
+    
+    / MetaTags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "SimpleDonation.com", :property => "og:site_name"}
+    %meta{:content => "Simple Donation | Easiest Way to Tithe Online", :property => "og:title"}
+    %meta{:content => "Simple Donation is the easiest online tithing software for churches to accept one-time and recurring donations.", :property => "og:description"}
+    
+    %title Texas Homeschool Coalition
+    
+  %body{:id => @body_id}
+    = yield
