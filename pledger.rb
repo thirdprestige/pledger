@@ -21,9 +21,10 @@ enable :sessions
 ## APP
 
 get '/' do
+  @body_id = "pledger.account_31"
   session[:user_id] ||= DB[:pledges].insert()
 
-  erb :index
+  haml :index
 end
 
 get '/pledges' do
@@ -33,7 +34,9 @@ get '/pledges' do
 end
 
 get '/thanks' do
-  erb :thanks
+  @body_id = "thanks"
+  
+  haml :thanks
 end
 
 # Update a pledge,
