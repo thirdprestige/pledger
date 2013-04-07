@@ -22,7 +22,7 @@
 <div class="row">
   <div class="well checkout loginbox span7 section offset">
     <h1 class="page-header"> Pledge </h1>
-    <form id="pledge" action="/your_url" method="post">
+    <form id="pledge" action="/thanks">
       <fieldset>
         <input type="text" data-slider="true" id="slider" data-slider-values="25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,500,600,700,800,900,1000,1500,2000,2500,3000,4000,5000,6000,7000,8000,9000,10000,12000,13000,14000,15000,17000,19000,21000,22000,25000" data-slider-equal-steps="true" data-slider-snap="true" data-slider-theme="volume">
         <h4 class="totals" id="total">Total:</h4>
@@ -98,18 +98,6 @@ $('#donate-refer').on('click', function() {
       $('.row a#donate-refer').attr('href', 'http://thsc.simpledonation.com/?amount_cents=' + $('span.total').html());
     });
     $('#donate-refer').trigger('click');
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#pledge').ajaxForm({
-            delegation: true,
-            target: '#output'
-        });
-  });
-</script>
-
-<script>
 </script>
 
 </body>
