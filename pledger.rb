@@ -4,7 +4,7 @@ Bundler.require
 
 ## DATABASE INITIALIZATION
 
-DB = Sequel.connect(ENV['DATABASE_URL'])
+#DB = Sequel.connect(ENV['DATABASE_URL'])
 
 DB.create_table :pledges do
   primary_key :id # user ID
@@ -22,7 +22,7 @@ enable :sessions
 
 get '/' do
   @body_id = "pledger.account_31"
-  session[:user_id] ||= DB[:pledges].insert()
+  #session[:user_id] ||= DB[:pledges].insert()
 
   haml :index
 end
@@ -30,7 +30,7 @@ end
 get '/pledges' do
   content_type :json
 
-  { amount_cents: DB[:pledges].sum(:amount_cents) }.to_json
+  #{ amount_cents: DB[:pledges].sum(:amount_cents) }.to_json
 end
 
 get '/thanks' do
@@ -46,10 +46,10 @@ end
 # - amount_cents
 # - email
 post '/pledges' do
-  DB[:pledges].where(id: session[:user_id]).update(
-    amount_cents: params[:amount_cents],
-    email: params[:email]
-  )
-
-  { status: :ok }.to_json
+  #DB[:pledges].where(id: session[:user_id]).update(
+  #  amount_cents: params[:amount_cents],
+  #  email: params[:email]
+  #)
+  #
+  #{ status: :ok }.to_json
 end

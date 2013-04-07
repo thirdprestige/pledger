@@ -1,1 +1,3 @@
-web: bundle exec ruby example.rb -p $PORT
+web: bundle exec ruby pledger.rb -p 3000
+
+## foreman start -f Procfile.dev

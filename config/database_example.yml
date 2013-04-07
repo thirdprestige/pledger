@@ -1,0 +1,19 @@
+common: &common
+  adapter: postgresql
+	username: example
+	password: example
+  min_messages: warning
+
+development:
+  <<: *common
+  database: pledger_development
+  host: localhost
+
+test:
+  <<: *common
+  database: pledger_test
+  host: localhost
+
+production:
+  <<: *common
+  database: pledger_production
