@@ -24,13 +24,16 @@ get '/' do
   session[:user_id] ||= DB[:pledges].insert()
 
   erb :index
-  erb :thanks
 end
 
 get '/pledges' do
   content_type :json
 
   { amount_cents: DB[:pledges].sum(:amount_cents) }.to_json
+end
+
+get '/thanks' do
+  erb :thanks
 end
 
 # Update a pledge,
