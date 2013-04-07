@@ -24,6 +24,7 @@ get '/' do
   session[:user_id] ||= DB[:pledges].insert()
 
   erb :index
+  erb :thanks
 end
 
 get '/pledges' do
