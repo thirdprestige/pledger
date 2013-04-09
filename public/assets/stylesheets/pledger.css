@@ -13,7 +13,7 @@
 #list h1 {
   font-family: baarmBi;
   padding-bottom: 16px;
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));  
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(90%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));  
       }
 }
 
