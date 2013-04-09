@@ -7,7 +7,7 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] ||  "sqlite:db/pledger.db")
 class Pledge
   include DataMapper::Resource
 
-  property :id, Serial # An auto-increment integer key
+  property :id, Serial
   property :email, String, :required => true, :unique => true,
       :format   => :email_address,
       :messages => {
@@ -16,8 +16,6 @@ class Pledge
         :format    => "Doesn't look like an email address to me ..."
       }
   property :amount_cents, Integer
-  #property :exchange_rate, BigDecimal, :precision => 10, :scale => 
-  #2, :default => 1 
 end
 
 DataMapper.finalize
@@ -43,9 +41,9 @@ get '/' do
   }
 end
 
-get '/pledges' do
-  haml :list, :locals => { :cs => Pledge.all }
-end
+#get '/pledges' do
+  #haml :list, :locals => { :cs => Pledge.all }
+#end
 
 get '/:id' do|id|
   @body_id = "List"
