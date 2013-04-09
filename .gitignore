@@ -23,3 +23,6 @@ example.rb
 
 # DevProc
 Procfile.dev
+
+# Ignore the database
+db/pledger.db
