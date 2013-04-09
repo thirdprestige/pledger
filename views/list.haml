@@ -1,0 +1,9 @@
+%h1 Pledges
+%a(href="/pledges/new") New Pledge
+%table
+  - cs.each do|c|
+    %tr
+      %td= c.email
+      %td= c.amount_cents
+      %td
+        %a(href="/contacts/#{c.id}") Show

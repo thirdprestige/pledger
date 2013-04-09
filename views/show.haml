@@ -1,0 +1,17 @@
+.container
+  .row
+    .span5
+      .hero-unit
+        %h1 Thanks, but this page is under construction!
+        %p your form has still been submitted.
+        %p
+          %a.btn.btn-primary.btn-large{ :href => "/" }
+            Return?
+
+%table
+  %tr
+    %td Email
+    %td= c.email
+  %tr
+    %td Pledge
+    %td= c.amount_cents

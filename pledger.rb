@@ -1,55 +1,58 @@
 require 'bundler'
 Bundler.require
+require 'data_mapper'
+require 'dm-core'
+DataMapper.setup(:default, ENV['DATABASE_URL'] ||  "sqlite:db/pledger.db")
 
+class Pledge
+  include DataMapper::Resource
 
-## DATABASE INITIALIZATION
-
-#DB = Sequel.connect(ENV['DATABASE_URL'])
-
-DB.create_table :pledges do
-  primary_key :id # user ID
-  String :email
-  Integer :amount_cents
+  property :id, Serial # An auto-increment integer key
+  property :email, String
+  property :amount_cents, Integer
 end rescue nil
 
+DataMapper.finalize
+DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 ## INITIAL SETUP
 
 enable :sessions
 
-
 ## APP
 
 get '/' do
   @body_id = "pledger.account_31"
-  #session[:user_id] ||= DB[:pledges].insert()
 
-  haml :index
+  haml :index, :locals => {
+    :c => Pledge.new,
+    :action => '/pledges/create'
+  }
+end
+
+get '/pledges/new' do
+  haml :form, :locals => {
+    :c => Pledge.new,
+    :action => '/pledges/create'
+  }
 end
 
 get '/pledges' do
-  content_type :json
-
-  #{ amount_cents: DB[:pledges].sum(:amount_cents) }.to_json
+  haml :list, :locals => { :cs => Pledge.all }
 end
 
-get '/thanks' do
+post '/pledges/create' do
+  c = Pledge.new
+  c.attributes = params
+  c.save
+
+  redirect("/pledges/#{c.id}")
+end
+
+get '/pledges/:id' do|id|
   @body_id = "thanks"
   
-  haml :thanks
-end
-
-# Update a pledge,
-# based on the session ID
-#
-# POST params:
-# - amount_cents
-# - email
-post '/pledges' do
-  #DB[:pledges].where(id: session[:user_id]).update(
-  #  amount_cents: params[:amount_cents],
-  #  email: params[:email]
-  #)
-  #
-  #{ status: :ok }.to_json
+  c = Pledge.get(id)
+  haml :show, :locals => { :c => c }
 end

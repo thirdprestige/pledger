@@ -1,0 +1,13 @@
+%h1 Create a new pledge
+%form(action="#{action}" method="POST")
+  %label(for="email") Email
+  %input(type="text" name="email" value="#{c.email}")
+  %br
+
+  %label(for="amount_cents") Amount
+  %input(type="text" name="amount_cents" value="#{c.amount_cents}")
+  %br
+
+  %input(type="submit")
+  %input(type="reset")
+  %br

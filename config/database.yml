@@ -2,7 +2,7 @@ common: &common
   adapter: postgresql
   username: jonahhalter
   password:
-    min_messages: warning
+  min_messages: warning
 
 development:
   <<: *common
