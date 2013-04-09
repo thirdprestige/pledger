@@ -16,6 +16,8 @@ class Pledge
         :format    => "Doesn't look like an email address to me ..."
       }
   property :amount_cents, Integer
+  #property :exchange_rate, BigDecimal, :precision => 10, :scale => 
+  #2, :default => 1 
 end rescue nil
 
 DataMapper.finalize
@@ -52,28 +54,6 @@ get '/:id' do|id|
   haml :show, :locals => { :c => c }
 end
 
-#####
-
-#get '/' do
-#  @body_id = "pledger.account_31"
-#
-#  haml :index, :locals => {
-#    :c => Pledge.new,
-#    :action => '/create'
-#  }
-#end
-
-#get '/new' do
-#  haml :form, :locals => {
-#    :c => Pledge.new,
-#    :action => '/create'
-#  }
-#end
-
-#get '/pledges' do
-#  haml :list, :locals => { :cs => Pledge.all }
-#end
-
 post '/create' do
   c = Pledge.new
   c.attributes = params
@@ -81,10 +61,3 @@ post '/create' do
 
   redirect("/#{c.id}")
 end
-
-#get '/:id' do|id|
-#  @body_id = "thanks"
-#  
-#  c = Pledge.get(id)
-#  haml :show, :locals => { :c => c }
-#end

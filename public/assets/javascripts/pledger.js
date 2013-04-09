@@ -374,21 +374,3 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
     });
   });
 })(this.jQuery || this.Zepto, this);
-/*
-  End of jQuery Simple Slider
-*/
-
-/* Prevent page from moving around on touch */
-// node.addEventListener("touchmove", function(event){
-//     // Only deal with one finger
-//     if(event.touches.length == 1){
-//         // Get the information for finger #1
-//         var touch = event.touches[0],
-//             // Find the style object for the node the drag started from
-//             style = touch.target.style;
-//         // Position the element under the touch point
-//         style.position = "absolute";
-//         style.left = touch.pageX + "px";
-//         style.top = touch.pageY + "px";
-//     }
-// }, false);

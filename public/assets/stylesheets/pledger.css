@@ -6,6 +6,12 @@
   font-style: normal;
   font-weight: 400; }
 
+@media (max-width: 480px) {
+  #list h1 { font-size: 50px; display: none; }
+  #list p { font-size: 14px; }
+  #list a { margin-top: -2px; }
+}
+
 .modal-body {
   height: 75px;
 }
@@ -16,10 +22,4 @@
 
 #list a {
   margin-top: 8px;
-}
-
-@media (max-width: 480px) {
-  #thanks h1 { font-size: 50px ; }
-  #thanks p { font-size: 14px ; }
-  #thanks a { margin-top: -2px; }
 }

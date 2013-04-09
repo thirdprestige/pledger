@@ -23,11 +23,7 @@
                   .control-group
                     %label.control-label{:for => "inputEmail"} Email
                     .controls
-                      %input#inputEmail{:required => "", "aria-required" => "true", :placeholder => "Email", :style => "height:27px; width: 220px", :type => "email", :name => "email", :value => "#{c.email}"}
-                  .input-prepend.input-append.hidden
-                    %span.add-on $
-                    %input#appendedPrependedInput.span2{:type => "text"}
-                    %span.add-on .00
+                      %input#inputEmail{:placeholder => "Email", :style => "height:27px; width: 220px", :type => "email", :name => "email", :value => "#{c.email}"}
               .modal-footer
                 %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Change amount
                 %button.btn.btn-info Pledge Now

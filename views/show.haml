@@ -1,20 +1,24 @@
 .container
   .row
-    .span5
-      .hero-unit
-        %table
-          %tr
-            %td Email
-            %td= c.email
-          %tr
-            %td Pledge
-            %td= c.amount_cents
-    .span5
-      .hero-unit
-        %h1 Thanks,
-        %p.lead.text-warning but this page is under construction!
-        %p We submitted your form anyways.
-        %p.muted (we really like you).
-        %p
-          %a.btn.btn-primary.btn-large{ :href => "/" }
-            Return?
+    .span5.hero-unit
+      %table
+        %dl.dl-horizontal
+          %dt Email: 
+          %dd= c.email
+        %dl.dl-horizontal
+          %dt Pledge:
+          %dd
+            %span#amount
+              %span.amount= c.amount_cents
+    .span5.hero-unit
+      %h1 Thanks,
+      %p.lead.text-warning but this page is under construction!
+      %p We submitted your form anyways.
+      %p.muted (we really like you).
+      %p
+        %a.btn.btn-primary.btn-large{ :href => "/" }
+          Return?
+
+:javascript
+  $('.amount').before('<span id="unit">$</span>');
+  $('.amount').after('<span id="decimall">.00</span>');
