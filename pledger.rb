@@ -27,14 +27,14 @@ get '/' do
 
   haml :index, :locals => {
     :c => Pledge.new,
-    :action => '/pledges/create'
+    :action => '/create'
   }
 end
 
-get '/pledges/new' do
+get '/new' do
   haml :form, :locals => {
     :c => Pledge.new,
-    :action => '/pledges/create'
+    :action => '/create'
   }
 end
 
@@ -42,15 +42,15 @@ get '/pledges' do
   haml :list, :locals => { :cs => Pledge.all }
 end
 
-post '/pledges/create' do
+post '/create' do
   c = Pledge.new
   c.attributes = params
   c.save
 
-  redirect("/pledges/#{c.id}")
+  redirect("/#{c.id}")
 end
 
-get '/pledges/:id' do|id|
+get '/:id' do|id|
   @body_id = "thanks"
   
   c = Pledge.get(id)

@@ -2,16 +2,19 @@
   .row
     .span5
       .hero-unit
-        %h1 Thanks, but this page is under construction!
-        %p your form has still been submitted.
+        %table
+          %tr
+            %td Email
+            %td= c.email
+          %tr
+            %td Pledge
+            %td= c.amount_cents
+    .span5
+      .hero-unit
+        %h1 Thanks,
+        %p.lead but this page is under construction!
+        %p.text-warning We submitted your form anyways.
+        %p.muted (we like you).
         %p
           %a.btn.btn-primary.btn-large{ :href => "/" }
             Return?
-
-%table
-  %tr
-    %td Email
-    %td= c.email
-  %tr
-    %td Pledge
-    %td= c.amount_cents
