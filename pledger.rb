@@ -13,7 +13,7 @@ class Pledge
 end rescue nil
 
 DataMapper.finalize
-DataMapper.auto_migrate!
+#DataMapper.auto_migrate!
 DataMapper.auto_upgrade!
 
 ## INITIAL SETUP
@@ -31,23 +31,8 @@ get '/' do
   }
 end
 
-get '/new' do
-  haml :form, :locals => {
-    :c => Pledge.new,
-    :action => '/create'
-  }
-end
-
 get '/pledges' do
   haml :list, :locals => { :cs => Pledge.all }
-end
-
-post '/create' do
-  c = Pledge.new
-  c.attributes = params
-  c.save
-
-  redirect("/#{c.id}")
 end
 
 get '/:id' do|id|

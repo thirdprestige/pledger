@@ -1,18 +1,3 @@
--#
-  %h1 Create a new pledge
-  %form(action="#{action}" method="POST")
-    %label(for="email") Email
-    %input(type="text" name="email" value="#{c.email}")
-    %br
-
-    %label(for="amount_cents") Amount
-    %input(type="text" name="amount_cents" value="#{c.amount_cents}")
-    %br
-
-    %input(type="submit")
-    %input(type="reset")
-    %br
-
 .container
   .row
     .well.checkout.loginbox.span7.section.offset
@@ -38,7 +23,7 @@
                   .control-group
                     %label.control-label{:for => "inputEmail"} Email
                     .controls
-                      %input#inputEmail{:placeholder => "Email", :style => "height:27px; width: 220px", :type => "email", :name => "email", :value => "#{c.email}"}
+                      %input#inputEmail{:required => "", "aria-required" => "true", :placeholder => "Email", :style => "height:27px; width: 220px", :type => "email", :name => "email", :value => "#{c.email}"}
                   .input-prepend.input-append.hidden
                     %span.add-on $
                     %input#appendedPrependedInput.span2{:type => "text"}
