@@ -1,1 +1,2 @@
-web: bundle exec rackup config.ru -p $PORT
+# foreman start -f Procfile
+web: bundle exec rackup config.ru -p 5000
