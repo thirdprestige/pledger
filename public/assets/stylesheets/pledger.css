@@ -10,15 +10,11 @@
   height: 75px;
 }
 
-#thanks p {
-  
-}
-
-#thanks h1 {
+#list h1 {
   font-family: baarmBi;
 }
 
-#thanks a {
+#list a {
   margin-top: 8px;
 }
 
