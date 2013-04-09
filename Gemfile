@@ -11,7 +11,6 @@ gem 'rake'
 
 gem 'pg'
 gem 'datamapper'
-#gem 'dm-core'
 
 gem 'do_postgres'
 gem 'dm-postgres-adapter'
