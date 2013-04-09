@@ -18,7 +18,7 @@ class Pledge
   property :amount_cents, Integer
   #property :exchange_rate, BigDecimal, :precision => 10, :scale => 
   #2, :default => 1 
-end rescue nil
+end
 
 DataMapper.finalize
 
