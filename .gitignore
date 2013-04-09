@@ -20,3 +20,6 @@ example.rb
 
 # vim artifacts
 **.swp
+
+# DevProc
+Procfile.dev
