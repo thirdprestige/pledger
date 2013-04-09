@@ -11,7 +11,7 @@
             %a#donate-refer.btn.btn-success.main-btn{"data-toggle" => "modal", :role => "button"}
               %strong
                 Donate Securely
-                %strong/
+                %strong
             %a.btn.btn-info.main-btn{"data-toggle" => "modal", :href => "#PledgeModal", :role => "button"} Pledge
             / Modal
             #PledgeModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "PledgeModal", :role => "dialog", :tabindex => "-1"}
@@ -25,8 +25,8 @@
                     .controls
                       %input#inputEmail{:placeholder => "Email", :style => "height:27px; width: 220px", :type => "email", :name => "email", :value => "#{c.email}"}
               .modal-footer
-                %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Change amount
                 %button.btn.btn-info Pledge Now
+                %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Change amount
 :javascript
   // AutoFocus new modal
   $(".modal").on('shown', function() {
